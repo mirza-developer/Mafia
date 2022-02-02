@@ -23,10 +23,7 @@
 
 	<ItemGroup>
 		<!-- App Icon -->
-		<MauiImage
-			Include="Resources\appicon.svg"
-			ForegroundFile="Resources\appiconfg.svg"
-			IsAppIcon="true" />
+		<MauiImage Include="Resources\appicon.svg" ForegroundFile="Resources\appiconfg.svg" IsAppIcon="true" />
 
 		<!-- Splash Screen -->
 		<MauiSplashScreen Include="Resources\appiconfg.svg" Color="#512BD4" />
@@ -42,6 +39,7 @@
 		<PackageReference Include="Microsoft.AspNetCore.Components.WebView.Maui" Version="6.0.101-preview.11.2349" />
 		<PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="6.0.1" />
 		<PackageReference Include="Microsoft.Maui.Dependencies" Version="6.0.101-preview.11.2349" />
+    <PackageReference Include="LiteDB" Version="5.0.11" />
 		<!--<PackageReference Include="Microsoft.Maui" Version="6.0.101-preview.11.2349" />-->
 	</ItemGroup>
 

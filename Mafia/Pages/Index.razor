@@ -1,7 +1,83 @@
 ﻿@page "/"
+@using Mafia.Tools
 
-<h1>Hello, world!</h1>
+<button type="button" class="btn btn-success" @onclick="ClickNewMatch">
+    Start match
+    <span class="oi oi-people"></span>
+</button>
+<button type="button" class="btn btn-warning" @onclick="ClickRetry">
+   <span class="oi oi-reload"></span>
+</button>
+<br />
+<hr />
 
-Welcome to your new app.
+<h3>Players</h3>
+<hr />
+<button type="button" class="btn btn-success"
+        @onclick="ClickAddPlayer">
+    <span class="oi oi-plus"></span>
+</button>
 
-<SurveyPrompt Title="How is Blazor working for you?" />
+
+<table class="table table-boarded">
+    <thead>
+        <tr>
+            <th>Row</th>
+            <th>Name</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (int i = 0; i < StorageHelper.Players.Count; i++)
+        {
+            Player player = StorageHelper.Players[i];
+            <tr>
+                <td>@(i+1)</td>
+                <td>@player.Name</td>
+                <td>
+                    <button class="btn btn-danger" @onclick="(e)=>ClickRemovePlayer(e, player.Id)">
+                        <span class="oi oi-minus"></span>
+                    </button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<br />
+
+<h3>Roles</h3>
+<hr />
+<button type="button" class="btn btn-success"
+        @onclick="ClickAddRole">
+    <span class="oi oi-plus"></span>
+</button>
+
+
+<table class="table table-boarded">
+    <thead>
+        <tr>
+            <th>Row</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Role type</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (int i = 0; i < StorageHelper.Roles.Count; i++)
+        {
+            Role role = StorageHelper.Roles[i];
+            <tr>
+                <td>@(i+1)</td>
+                <td>@role.Name</td>
+                <td>@role.Description</td>
+                <td>@(role.IsMafia?"Mafia":"Citizen")</td>
+                <td>
+                    <button class="btn btn-danger" @onclick="(e)=>ClickRemoveRole(e, role.Id)">
+                        <span class="oi oi-minus"></span>
+                    </button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

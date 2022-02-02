@@ -1,0 +1,12 @@
+﻿@page "/AddPlayer"
+
+<div class="col-md-12">
+    <label>Player name :</label>
+    <input @ref="Input" type="text" @bind-value="Name" class="form-control" />
+    <button type="button" class="btn btn-primary" @onclick="ClickSavePlayer">
+        <span class="oi oi-plus"></span>
+    </button>
+    <button type="button" class="btn btn-warning" @onclick="ClickBack">
+        <span class="oi oi-arrow-circle-right"></span>
+    </button>
+</div>
