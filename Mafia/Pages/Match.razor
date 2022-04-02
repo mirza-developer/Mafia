@@ -1,0 +1,45 @@
+﻿@page "/Match"
+
+<h3>Match</h3>
+<button type="button" class="btn btn-warning" @onclick="ClickBack">
+    <span class="oi oi-arrow-circle-right"></span>
+</button>
+@if (!IsShowRole)
+{
+    <table class="table table-boarded">
+        <thead>
+            <tr>
+                <th>Row</th>
+                <th>Name</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (int i = 0; i < Draw.Count; i++)
+            {
+                PlayerRole draw = Draw[i];
+                if (!draw.IsShown)
+                {
+                    <tr>
+                        <td>@(i+1)</td>
+                        <td>@draw.Player.Name</td>
+                        <td>
+                            <button class="btn btn-danger" @onclick="(e)=>ShowRole(draw)">
+                                <span class="oi oi-dial"></span>
+                            </button>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <h3>Your name : @Playername</h3>
+    <h3>Your role : @Rolename  </h3>
+    <button type="button" class="btn btn-success" @onclick="HideRole">
+        Accept
+    </button>
+}
+
