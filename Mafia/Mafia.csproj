@@ -1,14 +1,17 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
 
 	<PropertyGroup>
-		<!-- iOS, Android, MacCatalyst -->
 		<TargetFrameworks>net6.0-android</TargetFrameworks>
 		<OutputType>Exe</OutputType>
 		<SingleProject>true</SingleProject>
 		<RootNamespace>Mafia</RootNamespace>
     <UseMaui>true</UseMaui>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <EnablePreviewMsixTooling>true</EnablePreviewMsixTooling>
+    <EnableDefaultCssItems>false</EnableDefaultCssItems>
 
-		<!-- Display name -->
+
+    <!-- Display name -->
 		<ApplicationTitle>Mafia</ApplicationTitle>
 
 		<!-- App Identifier -->
@@ -18,15 +21,14 @@
 		<ApplicationVersion>1</ApplicationVersion>
 		<AndroidVersionCode>1</AndroidVersionCode>
 
-		<UseInterpreter Condition="'$(TargetFramework)' == 'net6.0-android'">True</UseInterpreter>
+    <UseInterpreter Condition="'$(Configuration)' == 'Debug'">True</UseInterpreter>
+
+    <SupportedOSPlatformVersion Condition="'$(TargetFramework)' == 'net6.0-android'">21.0</SupportedOSPlatformVersion>
 	</PropertyGroup>
 
 	<ItemGroup>
 		<!-- App Icon -->
-		<MauiImage
-			Include="Resources\appicon.svg"
-			ForegroundFile="Resources\appiconfg.svg"
-			IsAppIcon="true" />
+		<MauiImage Include="Resources\appicon.svg" ForegroundFile="Resources\appiconfg.svg" IsAppIcon="true" />
 
 		<!-- Splash Screen -->
 		<MauiSplashScreen Include="Resources\appiconfg.svg" Color="#512BD4" />
@@ -39,10 +41,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.AspNetCore.Components.WebView.Maui" Version="6.0.101-preview.11.2349" />
 		<PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="6.0.1" />
-		<PackageReference Include="Microsoft.Maui.Dependencies" Version="6.0.101-preview.11.2349" />
-		<!--<PackageReference Include="Microsoft.Maui" Version="6.0.101-preview.11.2349" />-->
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebView.Maui" Version="6.0.200-preview.14.5099" />
+    <PackageReference Include="Microsoft.Maui.Dependencies" Version="6.0.200-preview.14.5099" />
 	</ItemGroup>
 
 	<PropertyGroup>
@@ -50,8 +51,5 @@
 		<RuntimeIdentifier Condition="'$(TargetFramework)' == 'net6.0-ios'">iossimulator-x64</RuntimeIdentifier>
 		<RuntimeIdentifier Condition="'$(TargetFramework)' == 'net6.0-maccatalyst'">maccatalyst-x64</RuntimeIdentifier>
 	</PropertyGroup>
-	<ItemGroup Condition="'$(TargetFramework)' == 'net6.0-android'">
-		<AndroidEnvironment Include="Android\AndroidEnvironment.txt" />
-	</ItemGroup>
 
 </Project>
